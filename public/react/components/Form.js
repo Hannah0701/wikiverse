@@ -18,14 +18,15 @@ export const Form = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        props.onSubmit(data)
+        props.addPage(data)
     };
 
     return (
         <>
             <button 
+              type="button"
               className="backButton" 
-              onClick={() => props.setIsAddingPage(false)}
+              onClick={props.goHome}
             >
                 Back to Wiki home
             </button>

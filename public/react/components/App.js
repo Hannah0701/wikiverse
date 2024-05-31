@@ -10,6 +10,11 @@ export const App = () => {
   const [activePage, setActivePage] = useState(null);
   const [isAddingPage, setIsAddingPage] = useState(false);
 
+  function goHome() {
+    setActivePage(null)
+    setIsAddingPage(false)
+  }
+
   async function handleClick(slug) {
     const response = await fetch(`${apiURL}/wiki/${slug}`)
     const pageData = await response.json()
@@ -28,6 +33,20 @@ export const App = () => {
     const newPage = await response.json()
     setPages([...pages, newPage])
     setIsAddingPage(false)
+  }
+
+  async function deletePage(slug) {
+    const response = await fetch(`${apiURL}/wiki/${slug}`, {
+      method: 'DELETE'
+    })
+
+    if (response.ok) {
+      const filteredPages = pages.filter((page) => page.slug !== slug)
+      setPages(filteredPages)
+      setActivePage(null)
+    } else {
+      console.log(response.status + ' ' + response.statusText)
+    }
   }
 
   useEffect(() => {
@@ -55,11 +74,17 @@ export const App = () => {
   }, [activePage, isAddingPage])
 
   if (isAddingPage) {
-    return <Form onSubmit={addPage} setIsAddingPage={setIsAddingPage} />;
+    return <Form 
+        addPage={addPage} 
+        goHome={goHome} 
+    />
   }
 
   if (activePage) {
-    return <Page {...activePage} setActivePage={setActivePage}/>
+    return <Page {...activePage} 
+        goHome={goHome} 
+        deletePage={deletePage} 
+    />
   }
 
   return (
