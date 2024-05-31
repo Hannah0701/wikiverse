@@ -1,10 +1,61 @@
 * {
-  margin: 0;
   box-sizing: border-box;
-  background-color: rgb(223, 223, 223);
+  background-color: rgb(215, 247, 242);
+  color: rgb(65, 69, 69)
 }
 
-main {
-  padding: 1rem;
-  height: 100vh;
+body {
+  width: 88%;
+  max-width: 40em;
+  margin: 1em auto;
+  line-height: 1.5;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1, h2 {
+  text-shadow: -1.5px 0 white, 0 1.5px white, 1.5px 0 white, 0 -1.5px white;
+  color: rgb(219, 70, 189);
+  text-align: center;
+}
+
+button {
+  font: inherit;
+  border-radius: 0.4em;
+  padding: 0.5em 1em;
+  border: none;
+  background: rgb(165, 57, 175);
+  color: white;
+  cursor: pointer;
+}
+
+input {
+  border-radius: 0.4em;
+  padding: 1em;
+  border: 1px solid rgb(165, 57, 175);
+  background-color: white;
+}
+
+textarea {
+  border-radius: 0.4em;
+  padding: 1em;
+  border: 1px solid rgb(165, 57, 175);
+  background-color: white;
+}
+
+.backButton {
+  background: rgb(219, 70, 189);
+}
+
+.link {
+  padding: 0;
+  border: none;
+  background: none;
+  color: rgb(193, 43, 163);
+  cursor: pointer;
+}
+
+.link:hover {
+  color: rgb(195, 0, 255);
+  text-decoration: underline;
 }
